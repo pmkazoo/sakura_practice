@@ -8,10 +8,6 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\File;
 
 class RegisterController extends Controller
 {
@@ -60,51 +56,18 @@ class RegisterController extends Controller
         ]);
     }
 
-        /**
-     * Handle a registration request for the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
-     */
-    public function register(Request $request)
-    {
-        $this->validator($request->all())->validate();
-
-        event(new Registered($user = $this->create($request)));
-
-        $this->guard()->login($user);
-
-        if ($response = $this->registered($request, $user)) {
-            return $response;
-        }
-
-        return $request->wantsJson()
-                    ? new JsonResponse([], 201)
-                    : redirect($this->redirectPath());
-    }
-
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  Request  $request
+     * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(Request $request)
+    protected function create(array $data)
     {
-        // 画像upload
-        $fileName = $request->file('image')->getClientOriginalName();
-        Storage::putFileAs('public/images', $request->file('image'),$fileName);
-        $fullFilePath = 'storage/images' . $fileName;
-
-        $data = $request->all();
-
-//        dd($fullFilePath);
-
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'img_url' => $fullFilePath,
         ]);
     }
 }
