@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Symfony\Component\ExpressionLanguage\Node\FunctionNode;
+
+use function Symfony\Component\DependencyInjection\Loader\Configurator\ref;
 
 class User extends Authenticatable
 {
@@ -20,8 +23,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
-        'img_url',
+        'password'
     ];
 
     /**
@@ -42,4 +44,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function groups(){
+        return $this->hasMany('App\Models\Group');
+    }
+
+    public function request_group(){
+        return $this->belongsToMany('App\Models\Group');
+    }
+    
 }

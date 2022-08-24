@@ -1,22 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    
-                    {{ __('You are logged in!') }}
-                </div>
+<div class="gtco-section">
+    <div class="gtco-container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                <h2>Find Group</h2>
+                <p></p>
             </div>
+        </div>
+        <div class="row">
+
+            @foreach($groups as $group)
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <a href="images/img_1.jpg" class="fh5co-card-item image-popup">
+                    <figure>
+                        <div class="overlay"><i class="ti-plus"></i></div>
+                        <img src="images/img_1.jpg" alt="Image" class="img-responsive">
+                    </figure>
+                    <div class="fh5co-text">
+                        <h2>{{ $group-> group_name}}</h2>
+                        <p>{{ $group-> group_contents}}</p>
+                        <form action="{{ url('group/'.$group->id) }}" method="GET">
+                            {{ csrf_field() }}
+                            <button type="submit" class="btn btn-primary">
+                                Detail
+                            </button>
+                        </form>
+                    </div>
+                </a>
+            </div>
+            @endforeach
         </div>
     </div>
 </div>
