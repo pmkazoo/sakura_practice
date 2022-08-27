@@ -29,7 +29,9 @@ class MypageController extends Controller
     {
         $my_groups = Group::where('owner_id','=',Auth::id())->get();
 
-        return view('mypage',['groups'=>$my_groups]);
+        $my_requests = User::find(Auth::id())->request_group()->get();
+        
+        return view('mypage',['groups'=>$my_groups,'requests'=>$my_requests]);
     }
 
     public function detail($group_id)

@@ -39,11 +39,8 @@ Route::post('group_request_confirm', [GroupsController::class, 'request_confirm'
 
 Route::get('mypage', [MypageController::class, 'index']);
 
-Route::get('mypage/{group_id}',[MypageController::class, 'detail']);
+Route::get('mygroup/{group_id}',[MypageController::class, 'detail']);
 
 Route::post('group_response',[MypageController::class, 'response']);
 
 Route::post('matching',[MatchingController::class, 'index']);
-
-
-Route::get('/example', [App\Http\Controllers\HomeController::class, 'example']);

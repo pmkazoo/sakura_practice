@@ -1,6 +1,30 @@
 @extends('layouts.app')
 @section('content')
 <!-- Bootstrapの定形コード… -->
+
+<div class="gtco-section border-bottom">
+    <div class="gtco-container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Chats</h2>
+            </div>
+        </div>
+
+
+
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 <div class="card-body">
     <div class="card-title">
         日程調整

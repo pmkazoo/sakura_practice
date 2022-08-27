@@ -50,7 +50,8 @@ class User extends Authenticatable
     }
 
     public function request_group(){
-        return $this->belongsToMany('App\Models\Group');
+        return $this->belongsToMany('App\Models\Group')
+                    ->withPivot('request_message','matching_flg');
     }
     
 }

@@ -41,7 +41,7 @@
                     </td>
                     <td class="table-text">
                         <div>
-                            <form action="{{ url('mypage/'.$group->id) }}" method="GET">
+                            <form action="{{ url('mygroup/'.$group->id) }}" method="GET">
                                 {{ csrf_field() }}
                                 <button type="submit" class="btn btn-primary">
                                     Detail
@@ -59,8 +59,44 @@
         <div class="row">
             <div class="col-md-12">
                 <h3>Your requests</h3>
+                @foreach($requests as $request)
+                <tr>
+                    <td class="table-text">
+                        <h4>{{ $request -> group_name }}</h4>
+                    </td>
+                    @if($request->pivot->matching_flg == 0)
+                    <td class="table-text">
+                        <div>
+                            <button type="submit" disabled class="btn btn-secondary">
+                                Waiting
+                            </button>
+                        </div>
+                    </td>
+                    @elseif($request -> pivot -> matching_flg == 1)
+                    <td class="table-text">
+                        <div>
+                            <form action="{{ url('matching') }}" method="POST">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="group_id" value="{{$request -> pivot ->group_id}}">
+                                <input type="hidden" name="user_id" value="{{$request -> pivot ->user_id}}">
+                                <button type="submit" class="btn btn-primary">
+                                    Chats
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                    @elseif($request -> pivot -> matching_flg == 2)
+                    <td class="table-text">
+                        <div>
+                            <button type="submit" disabled class="btn btn-danger">
+                                Declined
+                            </button>
+                        </div>
+                    </td>
+                    @endif
+                </tr>
+                @endforeach
 
-                <p>未作成。OK、Declined、未対応の3つで場合わけ</p>
             </div>
         </div>
 
