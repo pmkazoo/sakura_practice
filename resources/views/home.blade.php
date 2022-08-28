@@ -17,7 +17,7 @@
                     <figure>
                         <div class="overlay"><i class="ti-plus"></i></div>
                         @if($group->img_url)
-                        <img src="/uploads/{{ $group->img_url }}"alt="Image" class="img-responsive">
+                        <img src="images/{{ $group->img_url }}"alt="Image" class="img-responsive">
                         @else
                         <img src="images/img_1.jpg" alt="Image" class="img-responsive">
                         @endif
