@@ -66,7 +66,7 @@ class GroupsController extends Controller
             $groups->save();
     
             //public/uploadフォルダを作成
-            $target_path = public_path('/imgages/');
+            $target_path = public_path('/images/');
     
             //ファイルをpublic/uploadフォルダに移動
             $file->move($target_path,$fileName);
