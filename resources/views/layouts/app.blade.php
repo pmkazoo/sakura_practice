@@ -70,6 +70,9 @@
 	<!-- Main -->
 	<script src="{{asset('js/main.js')}}"></script>
 
+	<script src=“https://js.pusher.com/3.2/pusher.min.js“></script>
+	<script src=“https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js”></script>
+
 </head>
 
 <body>
@@ -109,7 +112,7 @@
 
 							<li class="nav-item has-dropdown">
 								<a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ url('makegroup') }}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-									Making a Group
+									Create Group
 								</a>
 							</li>
 

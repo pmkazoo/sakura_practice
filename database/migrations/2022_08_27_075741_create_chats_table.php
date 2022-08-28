@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('groups', function (Blueprint $table) {
-            $table->id();
-            $table->string('group_name');
-            $table->integer('owner_id');
-            $table->text('group_contents');
-            $table->string('img_url')->nullable();
+        Schema::create('chats', function (Blueprint $table) {
+            $table->bigIncrements('id');
+
+            $table->unsignedBigInteger('group_id');
+            $table->unsignedBigInteger('send_id');
+            $table->unsignedBigInteger('recieve_id');
+            $table->text('message');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('groups');
+        Schema::dropIfExists('chats');
     }
 };

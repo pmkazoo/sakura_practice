@@ -16,7 +16,11 @@
                 <a href="images/img_1.jpg" class="fh5co-card-item image-popup">
                     <figure>
                         <div class="overlay"><i class="ti-plus"></i></div>
+                        @if($group->img_url)
+                        <img src="/uploads/{{ $group->img_url }}"alt="Image" class="img-responsive">
+                        @else
                         <img src="images/img_1.jpg" alt="Image" class="img-responsive">
+                        @endif
                     </figure>
                     <div class="fh5co-text">
                         <h2>{{ $group-> group_name}}</h2>

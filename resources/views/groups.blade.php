@@ -10,7 +10,7 @@
                 <div class="col-md-12 animate-box">
                     <h3>What's you group?</h3>
 
-                    <form method="POST" action="{{ url('groups') }}">
+                    <form method="POST" action="{{ url('groups') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="row mb-3">
@@ -27,8 +27,14 @@
                             <label for="contents" class="col-md-4 col-form-label text-md-end">Group contents</label>
 
                             <div class="col-md-6">
-                                <textarea id = "contents" name="group_contents" class="form-control" rows="4" cols="60"></textarea>
+                                <textarea id="contents" name="group_contents" class="form-control" rows="4" cols="60"></textarea>
                             </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row mb-3">
+                            <input id="fileUploader" type="file" name="img" accept='image/' enctype="multipart/form-data" multiple="multiple" required autofocus>
                         </div>
 
                         <br>

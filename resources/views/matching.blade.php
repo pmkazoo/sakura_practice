@@ -10,49 +10,35 @@
             </div>
         </div>
 
+        <div id="room">
+            @foreach($messages as $key => $message)
+            {{-- 送信したメッセージ  --}}
+            @if($message->send_id == Auth::id())
+            <div class="send" style="text-align: right">
+                <p>{{$message->message}}</p>
+            </div>
 
+            @endif
 
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-<div class="card-body">
-    <div class="card-title">
-        日程調整
-    </div>
-    <!-- バリデーションエラーの表示に使用-->
-    <!-- @include('common.errors') -->
-    <!-- バリデーションエラーの表示に使用-->
-    <!-- 作成フォーム -->
-
-    <form action="{{ url('schedule_request') }}" method="POST">
-        {{ csrf_field() }}
-        <input type="hidden" name="matching" value="{{$matching}}">
-        <div>第1候補</div>
-        <input type="datetime-local" name="mtg_datetime_1">
-
-        <div>第2候補</div>
-        <input type="datetime-local" name="mtg_datetime_2">
-
-        <div>第3候補</div>
-        <input type="datetime-local" name="mtg_datetime_3">
-
-        <div>
-            <button type="submit" class="btn btn-primary">
-                送信
-            </button>
+            {{-- 受信したメッセージ  --}}
+            @if($message->recieve_id == Auth::id())
+            <div class="recieve" style="text-align: left">
+                <p>{{$message->message}}</p>
+            </div>
+            @endif
+            @endforeach
         </div>
-    </form>
 
+        <form method="POST" action="{{ url('matching/send') }}">
+            <input type="hidden" name="send" value="{{$param['send_id']}}">
+            <input type="hidden" name="recieve" value="{{$param['recieve_id']}}">
+            <input type="hidden" name="login" value="{{Auth::id()}}">
+            <input type="hidden" name="group" value="{{$param['group_id']}}">
+
+            <textarea name="message" style="width:100%"></textarea>
+            <button type="submit" id="btn_send">submit</button>
+        </form>
+
+    </div>
 </div>
-
 @endsection

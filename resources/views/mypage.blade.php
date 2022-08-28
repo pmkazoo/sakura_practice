@@ -14,7 +14,7 @@
         <!-- 作成フォーム -->
         <div class="row">
             <div class="col-md-12">
-                <h3>Make your group</h3>
+                <h3>Create your group</h3>
             </div>
         </div>
 
@@ -23,7 +23,7 @@
             <div class="row mb-0">
                 <div class="col-md-8 offset-md-4">
                     <button type="submit" class="btn btn-primary">
-                        Make
+                        Create
                     </button>
                 </div>
             </div>

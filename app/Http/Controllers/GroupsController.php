@@ -8,6 +8,7 @@ use App\Models\User;
 use Auth;
 use Symfony\Component\ExpressionLanguage\Node\FunctionNode;
 use Validator;
+use Illuminate\Support\Str;
 
 class GroupsController extends Controller
 {
@@ -41,11 +42,39 @@ class GroupsController extends Controller
         // }
         
         //以下に登録処理を記述（Eloquentモデル）
+        // 画像ファイル取得
+
+
+
         $groups = new Group;
         $groups->group_name = $request->group_name;
         $groups->owner_id = Auth::id();
         $groups->group_contents = $request->group_contents;
-        $groups->save();
+
+        $file = $request->img;
+
+        if ( !empty($file) ) {
+    
+            // ファイルの拡張子取得
+            $ext = $file->guessExtension();
+    
+            //ファイル名を生成
+            $fileName = Str::random(32).'.'.$ext;
+    
+            // 画像のファイル名を任意のDBに保存
+            $groups->img_url = $fileName;
+            $groups->save();
+    
+            //public/uploadフォルダを作成
+            $target_path = public_path('/uploads/');
+    
+            //ファイルをpublic/uploadフォルダに移動
+            $file->move($target_path,$fileName);
+    
+        }else{
+            $groups->save();
+        }
+
         
         return redirect('/');
         
