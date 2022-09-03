@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Omido</title>
+	<title>Senpal</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- CSRF Token -->
@@ -85,7 +85,7 @@
 
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
-						<div id="gtco-logo"><a href="/">Omido</a></div>
+						<div id="gtco-logo"><a href="{{ url('/')}}">Senpal</a></div>
 					</div>
 					<div class="col-xs-8 text-right menu-1">
 						<ul>
