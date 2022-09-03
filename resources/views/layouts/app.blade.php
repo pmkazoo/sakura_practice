@@ -91,27 +91,26 @@
 						<ul>
 							@guest
 							@if (Route::has('login'))
-							<li class="nav-item">
-								<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+							<li>
+								<a href="{{ route('login') }}">{{ __('Login') }}</a>
 							</li>
 							@endif
 
 							@if (Route::has('register'))
-							<li class="nav-item">
-								<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+							<li>
+								<a href="{{ route('register') }}">{{ __('Register') }}</a>
 							</li>
 							@endif
 							@else
 
-							<li class="nav-item has-dropdown">
-								<a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ url('mypage/') }}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+							<li>
+								<a href="{{ url('mypage/') }}" >
 									{{ Auth::user()->name }}
 								</a>
 							</li>
 
-
-							<li class="nav-item has-dropdown">
-								<a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{ url('makegroup') }}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+							<li>
+								<a href="{{ url('makegroup') }}">
 									Create Group
 								</a>
 							</li>
@@ -123,13 +122,11 @@
 								</a>
 							</li>
 
-							<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+							<form id="logout-form" action="{{ route('logout') }}" method="POST">
 								@csrf
 							</form>
 						</ul>
 
-						<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-						</div>
 						</li>
 						@endguest
 						</ul>
@@ -139,7 +136,7 @@
 			</div>
 		</nav>
 
-		<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(images/img_bg_2.jpg)">
+		<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner">
 			<div class="overlay"></div>
 		</header>
 
@@ -219,7 +216,7 @@
 
 
 	<!-- Main -->
-	<script src="{{asset('js/main.js')}}"></script>
+	<!-- <script src="{{asset('js/main.js')}}"></script> -->
 
 </body>
 
