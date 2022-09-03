@@ -22,9 +22,6 @@
 
                     <br>
 
-                    <button type="button" class="btn btn-white" onclick="history.back()">
-                        back
-                    </button>
                 </div>
             </div>
         </div>
