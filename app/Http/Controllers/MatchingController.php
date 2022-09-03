@@ -23,36 +23,37 @@ class MatchingController extends Controller
 
     public function index(Request $request)
     {
-        // チャットの画面
-        $group = $request->group_id;
+        // // チャットの画面
+        // $group = $request->group_id;
 
-        $loginId = Auth::id();
+        // $loginId = Auth::id();
 
-        if($request->user_id == $loginId)
-        {
-            $recieve = Group::find($group)->owner_id;
-        }else
-        {
-            $recieve = $request->user_id;
+        // if($request->user_id == $loginId)
+        // {
+        //     $recieve = Group::find($group)->owner_id;
+        // }else
+        // {
+        //     $recieve = $request->user_id;
 
-        }
+        // }
 
-        $param = [
-            'send_id' => $loginId,
-            'recieve_id' => $recieve,
-            'group_id' => $group,
-        ];
+        // $param = [
+        //     'send_id' => $loginId,
+        //     'recieve_id' => $recieve,
+        //     'group_id' => $group,
+        // ];
 
-        // 送信 / 受信のメッセージを取得する
-        $query = Chat::where('group_id', $group)->where('send_id', $loginId)->where('recieve_id', $recieve);
-        $query->orWhere(function ($query) use ($loginId, $recieve) {
-            $query->where('send_id', $recieve);
-            $query->where('recieve_id', $loginId);
-        });
+        // // 送信 / 受信のメッセージを取得する
+        // $query = Chat::where('group_id', $group)->where('send_id', $loginId)->where('recieve_id', $recieve);
+        // $query->orWhere(function ($query) use ($loginId, $recieve) {
+        //     $query->where('send_id', $recieve);
+        //     $query->where('recieve_id', $loginId);
+        // });
 
-        $messages = $query->get();
+        // $messages = $query->get();
 
-        return view('matching', compact('param', 'messages'));
+        // return view('matching', compact('param', 'messages'));
+        return view('matching');
     }
 
     public function store(Request $request)

@@ -13,7 +13,7 @@
 
             @foreach($groups as $group)
             <div class="col-lg-4 col-md-4 col-sm-6">
-                <a href="images/img_1.jpg" class="fh5co-card-item image-popup">
+                <a href="{{ url('group/'.$group->id) }}" class="fh5co-card-item image-popup">
                     <figure>
                         <div class="overlay"><i class="ti-plus"></i></div>
                         @if($group->img_url)

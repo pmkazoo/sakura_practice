@@ -58,7 +58,6 @@ Route::get('/img', [ImgController::class, 'index']);
 Route::post('/img/upload',[ImgController::class, 'upload']);
 
 
-
 Route::post('/send-message', function (Request $request) {
     event(
         new Message(

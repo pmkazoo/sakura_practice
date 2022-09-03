@@ -18,12 +18,13 @@
 
                         <div>
                             <h4>Request Message</h4>
-                            
+
                             <input type="hidden" name="group_id" value="{{$group->id}}">
 
                             <div>
                                 <textarea id = "request" name="request_message" class="form-control" rows="4" cols="60"></textarea>
                             </div>
+                            <p>Please type your e-mail address so that you can contact with group owner.</p>
                         </div>
 
                         <br>
