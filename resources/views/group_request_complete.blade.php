@@ -1,4 +1,4 @@
-@extends('layouts.app'))
+@extends('layouts.app')
 @section('content')
 <!-- Bootstrapの定形コード… -->
 <div class="gtco-section border-bottom">
